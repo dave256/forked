@@ -22,7 +22,8 @@ public struct MergeableValue<T: Equatable>: Equatable {
             (timestamp, id.uuidString) > (other.timestamp, other.id.uuidString)
         }
     }
-    
+
+
     private var entry: Entry
     
     public var value: T {
@@ -53,3 +54,6 @@ extension MergeableValue.Entry: Codable where T: Codable {}
 
 extension MergeableValue: Hashable where T: Hashable {}
 extension MergeableValue.Entry: Hashable where T: Hashable {}
+
+extension MergeableValue.Entry: Sendable where T: Sendable {}
+extension MergeableValue: Sendable where T: Sendable {}
